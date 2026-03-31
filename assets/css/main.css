@@ -1443,7 +1443,7 @@ input, select, textarea {
 				width: 4.75rem;
 				height: 4.75rem;
 				line-height: 4.75rem;
-				margin-bottom: 0.5rem !important;
+				margin-bottom: 0.05rem !important;
 			}
 
 				#header .logo .icon:before {
@@ -1476,7 +1476,7 @@ input, select, textarea {
 		        }
 
 				 #header .logo {
-		            margin-bottom: 0.5rem !important;  /* add this */
+		            margin-bottom: 0.05rem !important;  /* add this */
 		        }
 
 				#header nav ul {
