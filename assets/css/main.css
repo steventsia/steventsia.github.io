@@ -1318,7 +1318,7 @@ input, select, textarea {
 				-webkit-transition-delay: 0.25s;
 				-ms-transition-delay: 0.25s;
 				transition-delay: 0.25s;
-				padding: 2.5rem 2rem;
+				padding: 1.5rem 2rem;
 				max-height: 40rem;
 				overflow: hidden;
 			}
@@ -1440,9 +1440,9 @@ input, select, textarea {
 				}
 
 			#header .logo {
-				width: 8rem;
-				height: 8rem;
-				line-height: 8rem;
+				width: 7rem;
+				height: 7rem;
+				line-height: 6rem;
 				margin-bottom: 0.1rem !important;
 			}
 
@@ -1451,7 +1451,7 @@ input, select, textarea {
 				}
 
 			#header .content .inner {
-				padding: 1.5rem 1rem;
+				padding: 1.5rem 1rem !important;
 			}
 
 			#header .content p {
@@ -1467,7 +1467,7 @@ input, select, textarea {
 			}
 
 				#header .content .inner {
-					padding: 1.5rem 0;
+					padding: 1.5rem 0 !important;
 				}
 
 				#header .content p {
