@@ -574,17 +574,18 @@
 									<li><a href="https://www.instagram.com/steven.tsia/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 									<li><a href="https://www.linkedin.com/in/steven-tsia-72434a297/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
 								</ul>
+								<p style="opacity: 0.6; font-size: 0.8em;">Or feel free to email me directly at <a href="mailto:steven@strixaudio.com">steven@strixaudio.com</a></p>
 								<script>
 									var form = document.getElementById('contact-form');
 									form.addEventListener('submit', function(e) {
 										e.preventDefault();
-										fetch('https://formspree.io/f/mkoqeedq', {
+										fetch('https://formspree.io/f/mlgovdlv', {
 											method: 'POST',
 											body: new FormData(form),
 											headers: { 'Accept': 'application/json' }
 										}).then(function(response) {
 											if (response.ok) {
-												document.getElementById('form-status').textContent = "Thanks! Your message has been sent.";
+												document.getElementById('form-status').textContent = "Thanks for the message! Talk to you soon.";
 												form.reset();
 											} else {
 												document.getElementById('form-status').textContent = "Oops! Something went wrong. Please try again.";
