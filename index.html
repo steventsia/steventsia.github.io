@@ -20,7 +20,7 @@
 				<!-- Header -->
 					<header id="header">
 						<div class="logo">
-							<img src="images/strixlogo_WithoutNest.png" alt="Strix Audio" style="width: 60%; height: 60%; object-fit: contain; display: block; margin: auto;" />
+							<img src="images/strixlogo_WithoutNest.png" alt="Strix Audio" style="width: 60%; height: 60%; opacity: 95%; object-fit: contain; display: block; margin: auto;" />
 						</div>
 						<div class="content">
 							<div class="inner">
@@ -49,7 +49,7 @@
 
 								His work spans foley artistry and mixing for narrative film to 4D spatial audio design for live installations. A background in both audio and visual media informs how he approaches every project, from the first frame to the final mix. <br> <br>
 
-								Steven is currently collaborating with Audio Essentia collective on <a href="https://audioessentia.com/depths.html" target="_blank">DEPTHS</a>, a spatial visual/audio installation combining advanced spatial technology with Indigenous wisdom traditions. The project utilizes 4DSound, Pro Tools, and QLab to create multi-sensory experiences at Lobe Studios and touring venues. <br> <br>
+								Steven is currently collaborating with Audio Essentia collective on <a href="https://audioessentia.com/depths.html" target="_blank">DEPTHS</a>, a 32 speaker visual-audio installation combining spatial technology with Indigenous wisdom traditions. The project utilizes 4DSound, Pro Tools, and QLab to create multi-sensory experiences at Lobe Studios and touring venues. <br> <br>
 
 								A graduate of Vancouver Film School's Sound Design program and a semi-finalist in the Airwiggles Sound Design Competition, Steven brings formal training and hands-on production experience to every project, applying the same attention to the craft whether working independently or within a full production team. <br> <br>
 
@@ -57,327 +57,487 @@
 								
 							</article>
 
-												<!-- Work -->
+				<!-- Work -->
 					<article id="work">
 						<h2 class="major">Portfolio</h2>
 
 						<style>
-							.portfolio-stack {
-								display: flex;
-								flex-direction: column;
-								gap: 0;
-								margin-top: 1.5rem;
+							
+							#work {
+								width: 80rem !important;
+								max-width: 100%;
+								max-height: 80vh;
+								overflow-y: auto;
+								-webkit-overflow-scrolling: touch;
+								position: relative;
 							}
 
-							.portfolio-item {
+							#intro {
+								max-height: 80vh;
+								overflow-y: auto;
+								-webkit-overflow-scrolling: touch;
+							}
+
+							/* Scroller */
+
+							#work::-webkit-scrollbar {
+								width: 4px;
+							}
+
+							#work::-webkit-scrollbar-track {
+								background: transparent;
+							}
+
+							#work::-webkit-scrollbar-thumb {
+								background: rgba(255, 255, 255, 0.2);
+								border-radius: 4px;
+							}
+
+							#work::-webkit-scrollbar-thumb:hover {
+								background: rgba(255, 255, 255, 0.4);
+							}
+
+							#intro::-webkit-scrollbar {
+								width: 4px;
+							}
+
+							#intro::-webkit-scrollbar-track {
+								background: transparent;
+							}
+
+							#intro::-webkit-scrollbar-thumb {
+								background: rgba(255, 255, 255, 0.2);
+								border-radius: 4px;
+							}
+
+							#intro::-webkit-scrollbar-thumb:hover {
+								background: rgba(255, 255, 255, 0.4);
+							}
+
+							/* Grid */
+							.pg-grid {
+								display: grid;
+								grid-template-columns: 1fr 1fr;
+								gap: 3px;
+								margin-top: 1.5rem;
+								margin-left: -1rem;
+    							margin-right: -1rem;
+								
+							}
+
+							.pg-cell {
 								position: relative;
-								width: 100%;
 								cursor: pointer;
 								overflow: hidden;
 								background: #000;
+								aspect-ratio: 16/9;
+								min-height: 160px
 							}
 
-							.portfolio-item::after {
-								content: '';
-								display: block;
-								position: absolute;
-								bottom: 0;
-								left: 0;
+							.pg-cell img {
 								width: 100%;
-								height: 60%;
-								background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
-								pointer-events: none;
-							}
-
-							.portfolio-item img.thumb {
-								width: 100%;
-								height: 220px;
+								height: 100%;
 								object-fit: cover;
 								display: block;
 								transition: transform 0.5s ease, opacity 0.4s ease;
-								opacity: 0.75;
-							}
-
-							.portfolio-item:hover img.thumb {
-								transform: scale(1.04);
-								opacity: 1;
-							}
-
-							.portfolio-item-info {
-								position: absolute;
-								bottom: 0;
-								left: 0;
-								width: 100%;
-								padding: 16px 20px;
-								z-index: 2;
-							}
-
-							.portfolio-item-info h3 {
-								margin: 0 0 4px 0;
-								font-size: 0.95em;
-								letter-spacing: 0.15rem;
-								text-transform: uppercase;
-								color: #fff;
-							}
-
-							.portfolio-item-info p {
-								margin: 0;
-								font-size: 0.75em;
 								opacity: 0.6;
-								letter-spacing: 0.05rem;
 							}
 
-							.portfolio-play-hint {
+							.pg-cell:hover img {
+								transform: scale(1.04);
+								opacity: 0.85;
+							}
+
+							.pg-cell-title {
 								position: absolute;
-								top: 50%;
-								left: 50%;
-								transform: translate(-50%, -50%);
-								width: 44px;
-								height: 44px;
-								border: 1px solid rgba(255,255,255,0.5);
-								border-radius: 50%;
+								inset: 0;
 								display: flex;
 								align-items: center;
 								justify-content: center;
 								opacity: 0;
 								transition: opacity 0.3s ease;
-								z-index: 3;
+								background: rgba(0,0,0,0.3);
+								padding: 12px;
+								text-align: center;
+								border: 8px solid rgba(255, 255, 255, 0.25);
 							}
 
-							.portfolio-play-hint::after {
-								content: '';
-								display: block;
-								width: 0;
-								height: 0;
-								border-style: solid;
-								border-width: 7px 0 7px 13px;
-								border-color: transparent transparent transparent rgba(255,255,255,0.9);
-								margin-left: 3px;
+							.pg-cell-title span {
+								font-size: 0.7em;
+								letter-spacing: 0.2rem;
+								text-transform: uppercase;
+								color: #fff;
+								font-weight: 600;
+								line-height: 1.4;
 							}
 
-							.portfolio-item:hover .portfolio-play-hint {
+							.pg-cell:hover .pg-cell-title {
 								opacity: 1;
 							}
 
-							.portfolio-item + .portfolio-item {
-								border-top: 1px solid rgba(255,255,255,0.08);
-							}
-
-							/* Fullscreen overlay */
-							.fs-overlay {
+							/* Project view */
+							.pg-overlay {
 								display: none;
-								position: fixed;
+								position: absolute;
 								z-index: 9999;
-								inset: 0;
-								background: rgba(0, 0, 0, 0.97);
-								animation: fsFadeIn 0.3s ease;
+								top: 0;
+								left: 0;
+								width: 100%;
+								height: 100%;
+								background: rgba(0,0,0,0.97);
 								overflow-y: auto;
+								animation: pgFade 0.3s ease;
 							}
 
-							@keyframes fsFadeIn {
+							@keyframes pgFade {
 								from { opacity: 0; }
-								to   { opacity: 1; }
+								to { opacity: 1; }
 							}
 
-							.fs-inner {
-								position: relative;
-								max-width: 960px;
+							.pg-view {
+								max-width: 860px;
 								margin: 0 auto;
-								padding: 60px 40px 60px;
-								min-height: 100vh;
-								display: flex;
-								flex-direction: column;
-								justify-content: center;
+								padding: 60px 30px 80px;
 							}
 
-							.fs-close {
-								position: fixed;
-								top: 24px;
-								right: 32px;
-								color: rgba(255,255,255,0.5);
-								font-size: 28px;
+							.pg-close {
+								position: sticky;
+								top: 22px;
+								float: right;
+								color: rgba(255,255,255,0.4);
+								font-size: 26px;
 								cursor: pointer;
 								transition: color 0.2s ease;
-								line-height: 1;
 								z-index: 10;
 								border-bottom: none;
+								line-height: 1;
+								margin-right: 28px;
+								display: block;
 							}
 
-							.fs-close:hover {
+							.pg-close:hover {
 								color: #fff;
 								border-bottom: none;
 							}
 
-							.fs-video-wrap {
+							.pg-iframe-wrap {
 								width: 100%;
 								aspect-ratio: 16/9;
 								background: #000;
-								border-radius: 4px;
-								overflow: hidden;
-								margin-bottom: 28px;
+								margin-bottom: 32px;
 							}
 
-							.fs-video-wrap iframe {
+							.pg-iframe-wrap.is-thumbnail {
+								aspect-ratio: unset;
+								height: auto;
+							}
+
+							.pg-iframe-wrap iframe {
 								width: 100%;
 								height: 100%;
 								border: none;
+								display: block;
 							}
 
-							.fs-meta {
-								display: flex;
-								flex-direction: column;
-								gap: 10px;
-							}
-
-							.fs-title {
-								font-size: 1.3em;
+							.pg-project-title {
+								font-size: 1.1em;
 								letter-spacing: 0.25rem;
 								text-transform: uppercase;
 								color: #fff;
+								margin: 0 0 20px 0;
+								font-weight: 600;
+								border-bottom: 1px solid rgba(255,255,255,0.15);
+								padding-bottom: 16px;
+							}
+
+							.pg-credits {
+								margin: 0 0 24px 0;
+							}
+
+							.pg-credits-title {
+								font-size: 0.65em;
+								letter-spacing: 0.2rem;
+								text-transform: uppercase;
+								color: #fff;
+								font-weight: 600;
+								margin: 0 0 10px 0;
+							}
+
+							.pg-credits p {
+								font-size: 0.78em;
+								line-height: 1.8;
+								opacity: 0.6;
 								margin: 0;
 							}
 
-							.fs-description {
-								font-size: 0.85em;
-								line-height: 1.7;
-								opacity: 0.65;
-								margin: 0;
+							.pg-desc {
+								font-size: 0.82em;
+								line-height: 1.8;
+								opacity: 0.55;
+								margin: 0 0 28px 0;
+								border-top: 1px solid rgba(255,255,255,0.08);
+								padding-top: 20px;
 							}
 
-							.fs-tags {
+							.pg-tags {
 								display: flex;
 								flex-wrap: wrap;
 								gap: 8px;
-								margin-top: 4px;
+								margin-bottom: 40px;
 							}
 
-							.fs-tag {
-								font-size: 0.65em;
-								letter-spacing: 0.1rem;
+							.pg-tag {
+								font-size: 0.6em;
+								letter-spacing: 0.12rem;
 								text-transform: uppercase;
 								border: 1px solid rgba(255,255,255,0.2);
 								padding: 4px 10px;
 								border-radius: 2px;
-								opacity: 0.6;
+								opacity: 0.5;
+							}
+
+							/* Bottom nav */
+							.pg-nav {
+								border-top: 1px solid rgba(255,255,255,0.1);
+								padding-top: 24px;
+								text-align: center;
+								line-height: 2.2;
+							}
+
+							.pg-nav-item {
+								display: inline;
+								font-size: 0.6em;
+								letter-spacing: 0.15rem;
+								text-transform: uppercase;
+								color: rgba(255,255,255,0.35);
+								cursor: pointer;
+								transition: color 0.2s ease;
+								border-bottom: none;
+								margin: 0 6px;
+							}
+
+							.pg-nav-item:hover,
+							.pg-nav-item.active {
+								color: #fff;
+								border-bottom: none;
+							}
+
+							.pg-nav-sep {
+								color: rgba(255,255,255,0.2);
+								font-size: 0.6em;
+								margin: 0 2px;
 							}
 
 							@media screen and (max-width: 736px) {
-							    .fs-inner {
-							        padding: 20px 15px;
-							    }
+								.pg-grid {
+									grid-template-columns: 1fr;
+								}
+
+								.pg-cell-title {
+									opacity: 1;
+									background: rgba(0,0,0,0.45);
+								}
+
+								.pg-view {
+									padding: 50px 20px 60px;
+								}
+
 							
-							    .fs-video-wrap {
-							        margin-bottom: 16px;
-							    }
 							}
+
+							
 							
 						</style>
 
-						<div class="portfolio-stack">
-
-							<div class="portfolio-item" onclick="openFS(0)">
-								<img class="thumb" src="images/Thumbnail_Warframe.jpg" alt="Project 1 thumbnail" />
-								<div class="portfolio-play-hint"></div>
-								<div class="portfolio-item-info">
-									<h3>Warframe: A New War</h3>
-									<p>Full sound redesign and mix</p>
-								</div>
+						<!-- Thumbnail Grid -->
+						<div class="pg-grid">
+							<div class="pg-cell" onclick="pgOpen(0)">
+								<img src="images/Thumbnail_Warframe.jpg" alt="Warframe: A New War" />
+								<div class="pg-cell-title"><span>Warframe: A New War</span></div>
 							</div>
-
-							<div class="portfolio-item" onclick="openFS(1)">
-								<img class="thumb" src="images/Thumbnail_WOH.jpg" alt="Project 2 thumbnail" />
-								<div class="portfolio-play-hint"></div>
-								<div class="portfolio-item-info">
-									<h3>World of Horror</h3>
-									<p>Full sound redesign and mix</p>
-								</div>
+							<div class="pg-cell" onclick="pgOpen(1)">
+								<img src="images/Thumbnail_WOH.jpg" alt="World of Horror" />
+								<div class="pg-cell-title"><span>World of Horror</span></div>
 							</div>
-
-							<div class="portfolio-item" onclick="openFS(2)">
-								<img class="thumb" src="images/Thumbnail_Afloat.webp" alt="Project 3 thumbnail" />
-								<div class="portfolio-play-hint"></div>
-								<div class="portfolio-item-info">
-									<h3>Afloat</h3>
-									<p>Showreel of Audio features</p>
-								</div>
+							<div class="pg-cell" onclick="pgOpen(2)">
+								<img src="images/Thumbnail_Afloat.webp" alt="Afloat" />
+								<div class="pg-cell-title"><span>Afloat</span></div>
 							</div>
-
+							<div class="pg-cell" onclick="pgOpen(3)">
+								<img src="images/Thumbnail_Killervacancy.jpg" style="object-position: center 40%;" alt="Killer Vacancy" />
+								<div class="pg-cell-title"><span>Killer Vacancy</span></div>
+							</div>
+							<div class="pg-cell" onclick="pgOpen(4)">
+								<img src="images/Thumbnail_dancemom.jpg" style="object-position: center 70%;" alt="Dance Mom" />
+								<div class="pg-cell-title"><span>Dance Mom</span></div>
+							</div>
+							<div class="pg-cell" onclick="pgOpen(5)">
+								<img src="images/Thumbnail_KnightTerror.jpg" style="object-position: center 50%;" alt="Knight Terror" />
+								<div class="pg-cell-title"><span>Knight Terror</span></div>
+							</div>
 						</div>
 
-						<!-- Fullscreen Overlay -->
-						<div id="fsOverlay" class="fs-overlay" onclick="closeFS()">
-    						<div class="fs-inner" onclick="event.stopPropagation()">
-								<a class="fs-close" onclick="closeFS()">&times;</a>
-								<div class="fs-video-wrap">
-									<iframe id="fsIframe" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+						<!-- Project Overlay -->
+						<div id="pgOverlay" class="pg-overlay">
+							<a class="pg-close" onclick="pgClose()">&times;</a>
+							<div class="pg-view">
+								<div class="pg-iframe-wrap">
+									<iframe id="pgIframe" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 								</div>
-								<div class="fs-meta">
-									<h2 class="fs-title" id="fsTitle"></h2>
-									<p class="fs-description" id="fsDesc"></p>
-									<div class="fs-tags" id="fsTags"></div>
+								<h2 class="pg-project-title" id="pgTitle"></h2>
+								<div class="pg-credits">
+									<p class="pg-credits-title">Credits</p>
+									<p id="pgCredits"></p>
 								</div>
+								<p class="pg-desc" id="pgDesc"></p>
+								<div class="pg-tags" id="pgTags"></div>
+								<div class="pg-nav" id="pgNav"></div>
 							</div>
 						</div>
 
 						<script>
-							// Replace XXXXXXXXX with your Vimeo video ID (found in the video URL)
-							var fsProjects = [
+							var pgProjects = [
 								{
-									title: "Warframe: A New War Sound Redesign",
-									description: "Completed as my graduating project at Vancouver Film School. All the original audio from this trailer was replaced with my foley, sound design, dialogue, and mixing. The result of a year of iteration, and collaboration. Previewed in 5.1 Surround at the VIFF theatre.",
-									tags: ["Redesign", "Stereo Mix", "Pro Tools"],
+									title: "Warframe: A New War — Sound Redesign",
+									credits: "Nova: Nicole Dy Ning\n Space Mom: Jodie Barros\n\nSound Design, Dialogue recorder & Foley: Steven Tsia\nAudio Mixer: Steven Tsia\nVancouver Film School — Graduating Project",
+									description: "Completed as my graduating project at Vancouver Film School. All original audio was replaced with my foley, sound design, dialogue recording, and mixing. The result of a year of iteration and collaboration. Previewed in 5.1 Surround at the VIFF theatre.",
+									tags: ["Sound Redesign", "Foley", "Dialogue Recording", "Mixing", "Pro Tools"],
 									vimeoId: "1176342540"
 								},
 								{
-									title: "World of Horror Sound Redesign",
+									title: "World of Horror — Sound Redesign",
+									credits: "Sound Design, Dialogue recorder, & Foley: Steven Tsia\nAudio Mix: Steven Tsia",
 									description: "Of every genre, horror is where I feel most at home. Silence becomes a weapon, the unknown feels present, and when dread starts to creep in, the mix pulls back and dialogue is given its room to breathe.",
-									tags: ["Redesign", "Stereo Mix", "Protools"],
+									tags: ["Sound Redesign", "Foley", "Stereo Mix", "Pro Tools"],
 									vimeoId: "1178621796"
 								},
 								{
-									title: "Afloat Technical audio",
-									description: "An introduction to the audio and features my team and I built for Afloat.  My role as a technical sound designer was implementation and tooling, keeping the pipeline efficient so the team could focus on the work.",
-									tags: ["Technical Audio Designer", "Wwise", "Unity"],
+									title: "Afloat — Technical Audio",
+									credits: "Technical Sound Designer: Steven Tsia\nSound Designer: Axel Braaten\n Composer: Dan Hawryluk",
+									description: "An introduction to the audio features my team and I built for Afloat. My role as technical sound designer was implementation and tooling, keeping the pipeline efficient so the team could focus on the work.",
+									tags: ["Technical Sound Design", "Wwise", "Unity"],
 									vimeoId: "1178647014"
+								},
+
+								{
+									title: "Killer Vacancy — Short Film",
+									credits: "Director: Julian Cipriano\n\nSound Design: John Gregory, Steven Tsia\nFoley: Steven Tsia, John Gregory\nDialogue Editing: Eloísa Sandoval\nRerecording Mixer: Dan Hawryluk, Axel Braaten, Boungjun Joung",
+									description: "A fragile young woman moves into a shared house, where she discovers that her strange roommates have a twisted idea of a practical joke.",
+									tags: ["Short film", "Foley", "Protools"],
+									thumbnail: "images/Thumbnail_Killervacancy.jpg",
+									thumbnailPosition: "center 30%",
+									thumbnailHeight: "700px"
+								},
+								{
+									title: "Dance Mom — Short Film",
+									credits: "\nDirector: Chad Cole\n\nSound Supervisor: Chris Baker\nFoley: Steven Tsia, John Gregory\nDialogue Editing: Eloísa Sandoval",
+									description: "A character drama about an estranged father and his daughter reconnecting through a dance recital.",
+									tags: ["Shortfilm","Foley", 'Protools'],
+									thumbnail: "images/Thumbnail_dancemom.jpg",
+									thumbnailPosition: "center 30%",
+									thumbnailHeight: "700px"
+								},
+								{
+									title: "Knight Terror — Short Film",
+									credits: "Director: George Michail\nProducer: Kate Kroll\n\n Sound Supervisor: Dan Hawryluk\n Sound Design: Axel Braaten\nFoley: Steven Tsia\nDialogue Editing: Eloísa Sandoval\nRerecording Mixer: John Gregory",
+									description: "At a remote campsite retreat, a startup's knight mascot begins killing employees. The Knightly staff must solve the murders while navigating office drama as bodies pile up.",
+									tags: ["Film", "5.1 Mix", "Protools"],
+									thumbnail: "images/Thumbnail_KnightTerror.jpg",
+									thumbnailPosition: "center 60%",
+									thumbnailHeight: "1000px"
 								}
 							];
 
-							function openFS(index) {
-								var p = fsProjects[index];
-								document.getElementById('fsTitle').textContent = p.title;
-								document.getElementById('fsDesc').textContent = p.description;
-								document.getElementById('fsIframe').src = 'https://player.vimeo.com/video/' + p.vimeoId + '?autoplay=1&title=0&byline=0&portrait=0&color=ffffff';
+							var pgCurrent = 0;
 
-								var tagsEl = document.getElementById('fsTags');
+							function pgOpen(index) {
+								pgCurrent = index;
+								pgRender(index);
+								var workEl = document.getElementById('work');
+								var overlay = document.getElementById('pgOverlay');
+								overlay.style.top = workEl.scrollTop + 'px';
+								overlay.style.display = 'block';
+								overlay.scrollTop = 0;
+								document.body.style.overflow = 'hidden';
+								workEl.style.overflow = 'hidden';
+							}
+
+							function pgRender(index) {
+								var p = pgProjects[index];
+								pgCurrent = index;
+
+								document.getElementById('pgTitle').textContent = p.title;
+								document.getElementById('pgDesc').textContent = p.description;
+								document.getElementById('pgCredits').innerHTML = p.credits.replace(/\n/g, '<br>');
+
+								var wrap = document.getElementById('pgIframe').parentNode;
+								var existingImg = document.getElementById('pgThumbImg');
+								if (existingImg) existingImg.remove();
+								document.getElementById('pgIframe').style.display = 'block';
+								wrap.classList.remove('is-thumbnail');
+
+								if (p.youtubeId) {
+									document.getElementById('pgIframe').src = 'https://www.youtube.com/embed/' + p.youtubeId + '?autoplay=1';
+								} else if (p.vimeoId) {
+									document.getElementById('pgIframe').src = 'https://player.vimeo.com/video/' + p.vimeoId + '?autoplay=1&title=0&byline=0&portrait=0&color=ffffff';
+								} else if (p.thumbnail) {
+									document.getElementById('pgIframe').style.display = 'none';
+									wrap.classList.add('is-thumbnail');
+									var img = document.createElement('img');
+									img.id = 'pgThumbImg';
+									img.src = p.thumbnail;
+									img.style.cssText = 'width:100%;height:' + (p.thumbnailHeight || '500px') + ';object-fit:cover;display:block;object-position:' + (p.thumbnailPosition || 'center center') + ';';
+									wrap.appendChild(img);
+								} else {
+									document.getElementById('pgIframe').src = '';
+								}
+
+								// Tags
+								var tagsEl = document.getElementById('pgTags');
 								tagsEl.innerHTML = '';
 								p.tags.forEach(function(t) {
 									var span = document.createElement('span');
-									span.className = 'fs-tag';
+									span.className = 'pg-tag';
 									span.textContent = t;
 									tagsEl.appendChild(span);
 								});
 
-								document.getElementById('fsOverlay').style.display = 'block';
-								document.body.style.overflow = 'hidden';
+								// Bottom nav
+								var navEl = document.getElementById('pgNav');
+								navEl.innerHTML = '';
+								pgProjects.forEach(function(proj, i) {
+									if (i > 0) {
+										var sep = document.createElement('span');
+										sep.className = 'pg-nav-sep';
+										sep.textContent = '/';
+										navEl.appendChild(sep);
+									}
+									var item = document.createElement('a');
+									item.className = 'pg-nav-item' + (i === index ? ' active' : '');
+									item.textContent = proj.title.split('—')[0].trim();
+									item.onclick = (function(idx) {
+										return function() {
+											document.getElementById('pgIframe').src = '';
+											setTimeout(function() { pgRender(idx); }, 50);
+											document.getElementById('pgOverlay').scrollTop = 0;
+										};
+									})(i);
+									navEl.appendChild(item);
+								});
 							}
 
-							function closeFS() {
-								// Clear iframe src to stop video playing
-								document.getElementById('fsIframe').src = '';
-								document.getElementById('fsOverlay').style.display = 'none';
+							function pgClose() {
+								document.getElementById('pgIframe').src = '';
+								document.getElementById('pgOverlay').style.display = 'none';
 								document.body.style.overflow = '';
+								document.getElementById('work').style.overflow = 'auto';
 							}
 
 							document.addEventListener('keydown', function(e) {
-								if (e.key === 'Escape') closeFS();
-							});
-
-							document.getElementById('fsOverlay').addEventListener('click', function(e) {
-								if (e.target === this) closeFS();
+								if (e.key === 'Escape') pgClose();
 							});
 						</script>
 					</article>
-
 
 						<!-- About -->
 							<article id="about">
@@ -411,7 +571,7 @@
 									<p id="form-status"></p>
 								</form>
 								<ul class="icons">
-									<li><a href="https://www.instagram.com/audioessentia/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="https://www.instagram.com/steven.tsia/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 									<li><a href="https://www.linkedin.com/in/steven-tsia-72434a297/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
 								</ul>
 								<script>
