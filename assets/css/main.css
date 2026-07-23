@@ -1363,10 +1363,11 @@ input, select, textarea {
 
 				#header nav ul li a {
 					display: block;
-					width: 7rem;
+					min-width: 0;
+					width: auto;
 					height: 2.75rem;
 					line-height: 2.75rem;
-					padding: 0 1rem;
+					padding: 0 1.5rem;
 					text-align: center;
 					text-transform: uppercase;
 					letter-spacing: 0.2rem;
