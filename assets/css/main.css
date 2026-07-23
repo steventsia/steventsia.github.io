@@ -1352,14 +1352,14 @@ input, select, textarea {
 			justify-content: center;
 		}
 
-			#header nav.use-middle ul li.is-middle {
-				padding-left: 0;
-				border-left: solid 1px #ffffff !important;
-			}
+			#header nav ul li {
+			padding-left: 0;
+			border-left: solid 1px #ffffff !important;
+		}
 
-				#header nav ul li:first-child {
-					border-left: 0 !important;
-				}
+		#header nav ul li:first-child {
+			border-left: 0 !important;
+		}
 
 				#header nav ul li a {
 					display: block;
@@ -1383,10 +1383,6 @@ input, select, textarea {
 
 		#header nav.use-middle:after {
 			display: none;
-		}
-
-		#header nav.use-middle ul li.is-middle {
-			border-left: 0;
 		}
 
 		body.is-article-visible #header {
