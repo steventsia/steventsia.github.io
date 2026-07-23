@@ -30,11 +30,28 @@
 							</div>
 						</div>
 						<nav>
+							<style>
+								#header nav {
+									display: flex !important;
+									flex-direction: column;
+									align-items: center;
+									row-gap: 0;
+								}
+								#header nav ul {
+									display: flex;
+									flex-wrap: nowrap;
+								}
+								#header nav ul.nav-secondary {
+									margin-top: 12px;
+								}
+							</style>
 							<ul>
 								<li><a href="#intro">About</a></li>
-        						<li><a href="#work">Portfolio</a></li>
-        						<li><a href="#depths">Depths</a></li>
-        						<li><a href="#contact">Contact</a></li>
+								<li><a href="#work">Portfolio</a></li>
+								<li><a href="#depths">Depths</a></li>
+							</ul>
+							<ul class="nav-secondary">
+								<li><a href="#contact">Contact</a></li>
 							</ul>
 						</nav>
 					</header>
