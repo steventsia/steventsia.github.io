@@ -1352,8 +1352,7 @@ input, select, textarea {
 			justify-content: center;
 		}
 
-			#header nav ul li {
-				padding-left: 0;
+			#header nav.use-middle ul li.is-middle {
 				border-left: solid 1px #ffffff;
 			}
 
