@@ -571,9 +571,10 @@
 
 									.depths-hero {
 										width: 100%;
+										max-width: 45rem;
+										margin: 0 auto 28px auto;
 										aspect-ratio: 16/9;
 										background: #000;
-										margin-bottom: 28px;
 									}
 
 									.depths-hero iframe {
@@ -593,6 +594,7 @@
 									.depths-carousel-wrap {
 										position: relative;
 										margin-bottom: 40px;
+										padding: 0 50px;
 									}
 
 									.depths-carousel {
@@ -640,74 +642,33 @@
 										opacity: 1;
 									}
 
-									.depths-carousel-btns {
-										display: flex;
-										gap: 10px;
-										margin-top: 12px;
-										justify-content: flex-end;
-									}
-
 									.depths-carousel-btn {
-										background: rgba(255,255,255,0.08);
+										position: absolute;
+										top: 50%;
+										transform: translateY(-50%);
+										background: rgba(0,0,0,0.5);
 										border: 1px solid rgba(255,255,255,0.2);
 										color: #fff;
-										width: 32px;
-										height: 32px;
-										border-radius: 2px;
+										width: 40px;
+										height: 40px;
+										border-radius: 50%;
 										cursor: pointer;
-										font-size: 14px;
+										font-size: 16px;
 										display: flex;
 										align-items: center;
 										justify-content: center;
 										transition: background 0.2s ease;
+										z-index: 5;
 									}
 
 									.depths-carousel-btn:hover {
-										background: rgba(255,255,255,0.18);
+										background: rgba(0,0,0,0.8);
 									}
 
-									.depths-lightbox {
-										display: none;
-										position: fixed;
-										inset: 0;
-										z-index: 99999;
-										background: rgba(0,0,0,0.95);
-										align-items: center;
-										justify-content: center;
-									}
+									.depths-carousel-btn.prev { left: 0; }
+									.depths-carousel-btn.next { right: 0; }
 
-									.depths-lightbox.active {
-										display: flex;
-									}
-
-									.depths-lightbox-inner {
-										width: 100%;
-										max-width: 70rem;
-									}
-
-									.depths-lightbox-inner img {
-										width: 100%;
-										aspect-ratio: 16/9;
-										object-fit: contain;
-										display: block;
-									}
-
-									.depths-lightbox-close {
-										position: fixed;
-										top: 20px;
-										right: 28px;
-										color: rgba(255,255,255,0.5);
-										font-size: 28px;
-										cursor: pointer;
-										border-bottom: none;
-										transition: color 0.2s ease;
-									}
-
-									.depths-lightbox-close:hover {
-										color: #fff;
-										border-bottom: none;
-									}
-
+						
 									@media screen and (max-width: 736px) {
 										.depths-slide { width: 88%; }
 									}
@@ -721,7 +682,7 @@
 								<script>
 									var depthsVideoId = "1212250572";
 									document.getElementById('depthsHeroIframe').src =
-										'https://player.vimeo.com/video/' + depthsVideoId + '?autoplay=1&title=0&byline=0&portrait=0&color=ffffff';
+										'https://player.vimeo.com/video/' + depthsVideoId + '?title=0&byline=0&portrait=0&color=ffffff';
 								</script>
 
 								<!-- Description -->
@@ -731,69 +692,83 @@
 
 								<!-- Carousel -->
 								<div class="depths-carousel-wrap">
+									<button class="depths-carousel-btn prev" onclick="depthsScroll(-1)">&#8592;</button>
+
 									<div class="depths-carousel" id="depthsCarousel">
-
-										<div class="depths-slide" onclick="depthsLightbox(this)">
-											<img src="images/Depths_01.JPG" alt="DEPTHS installation" />
-										</div>
-
-										<div class="depths-slide" onclick="depthsLightbox(this)">
-											<img src="images/Depths_02.JPG" alt="DEPTHS installation" />
-										</div>
-
-										<div class="depths-slide" onclick="depthsLightbox(this)">
-											<img src="images/Depths_03.JPG" alt="DEPTHS installation" />
-										</div>
-
-										<div class="depths-slide" onclick="depthsLightbox(this)">
-											<img src="images/Depths_04.jpg" alt="DEPTHS installation" />
-										</div>
-
-										<div class="depths-slide" onclick="depthsLightbox(this)">
-											<img src="images/Depths_05.jpg" alt="DEPTHS installation" />
-										</div>
-
-										<div class="depths-slide" onclick="depthsLightbox(this)">
-											<img src="images/Depths_06.jpg" alt="DEPTHS installation" />
-										</div>
-
-										<div class="depths-slide" onclick="depthsLightbox(this)">
-											<img src="images/Depths_07.jpg" alt="DEPTHS installation" />
-										</div>
-
+										<div class="depths-slide" onclick="depthsOpen(0)"><img src="images/Depths_01.JPG" alt="DEPTHS installation" /></div>
+										<div class="depths-slide" onclick="depthsOpen(1)"><img src="images/Depths_02.JPG" alt="DEPTHS installation" /></div>
+										<div class="depths-slide" onclick="depthsOpen(2)"><img src="images/Depths_03.JPG" alt="DEPTHS installation" /></div>
+										<div class="depths-slide" onclick="depthsOpen(3)"><img src="images/Depths_04.jpg" alt="DEPTHS installation" /></div>
+										<div class="depths-slide" onclick="depthsOpen(4)"><img src="images/Depths_05.jpg" alt="DEPTHS installation" /></div>
+										<div class="depths-slide" onclick="depthsOpen(5)"><img src="images/Depths_06.jpg" alt="DEPTHS installation" /></div>
+										<div class="depths-slide" onclick="depthsOpen(6)"><img src="images/Depths_07.jpg" alt="DEPTHS installation" /></div>
 									</div>
 
-									<div class="depths-carousel-btns">
-										<button class="depths-carousel-btn" onclick="depthsScroll(-1)">&#8592;</button>
-										<button class="depths-carousel-btn" onclick="depthsScroll(1)">&#8594;</button>
-									</div>
+									<button class="depths-carousel-btn next" onclick="depthsScroll(1)">&#8594;</button>
 								</div>
 
-								<!-- Lightbox -->
-								<div class="depths-lightbox" id="depthsLightbox" onclick="this.classList.remove('active')">
-									<a class="depths-lightbox-close" onclick="document.getElementById('depthsLightbox').classList.remove('active')">&times;</a>
-									<div class="depths-lightbox-inner">
-										<img id="depthsLightboxImg" src="" alt="" />
+								<!-- Depths Image Overlay (matches portfolio pop-up style) -->
+								<div id="depthsOverlay" class="pg-overlay">
+									<a class="pg-close" onclick="depthsCloseOverlay()">&times;</a>
+									<div class="pg-view">
+										<div class="pg-iframe-wrap is-thumbnail">
+											<img id="depthsOverlayImg" src="" alt="DEPTHS installation" style="width:100%;height:auto;display:block;object-fit:contain;" />
+										</div>
+										<div class="pg-nav" id="depthsOverlayNav"></div>
 									</div>
 								</div>
 
 								<script>
+									var depthsImages = [
+										"images/Depths_01.JPG",
+										"images/Depths_02.JPG",
+										"images/Depths_03.JPG",
+										"images/Depths_04.jpg",
+										"images/Depths_05.jpg",
+										"images/Depths_06.jpg",
+										"images/Depths_07.jpg"
+									];
+
 									function depthsScroll(dir) {
 										var c = document.getElementById('depthsCarousel');
 										c.scrollBy({ left: dir * 420, behavior: 'smooth' });
 									}
 
-									function depthsLightbox(el) {
-										var img = el.querySelector('img');
-										if (!img) return;
-										document.getElementById('depthsLightboxImg').src = img.src;
-										document.getElementById('depthsLightbox').classList.add('active');
+									function depthsOpen(index) {
+										depthsRender(index);
+										document.getElementById('depthsOverlay').style.display = 'block';
+										document.body.style.overflow = 'hidden';
+									}
+
+									function depthsRender(index) {
+										document.getElementById('depthsOverlayImg').src = depthsImages[index];
+
+										var navEl = document.getElementById('depthsOverlayNav');
+										navEl.innerHTML = '';
+										depthsImages.forEach(function(img, i) {
+											if (i > 0) {
+												var sep = document.createElement('span');
+												sep.className = 'pg-nav-sep';
+												sep.textContent = '/';
+												navEl.appendChild(sep);
+											}
+											var item = document.createElement('a');
+											item.className = 'pg-nav-item' + (i === index ? ' active' : '');
+											item.textContent = (i + 1);
+											item.onclick = (function(idx) {
+												return function() { depthsRender(idx); };
+											})(i);
+											navEl.appendChild(item);
+										});
+									}
+
+									function depthsCloseOverlay() {
+										document.getElementById('depthsOverlay').style.display = 'none';
+										document.body.style.overflow = '';
 									}
 
 									document.addEventListener('keydown', function(e) {
-										if (e.key === 'Escape') {
-											document.getElementById('depthsLightbox').classList.remove('active');
-										}
+										if (e.key === 'Escape') depthsCloseOverlay();
 									});
 								</script>
 							</article>
