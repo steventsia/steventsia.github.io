@@ -249,24 +249,20 @@
 								flex: 1 1 60%;
 								display: flex;
 								align-items: flex-start;
+								justify-content: flex-start;
 								min-width: 0;
-								max-height: 100%;
-							}
-
-							.pg-iframe-wrap {
-								width: auto;
-								height: 100%;
-								aspect-ratio: 16/9;
-								background: #000;
-								max-width: 100%;
-								max-height: 100%;
-							}
-
-							.pg-video-col {
+								min-height: 0;
 								max-height: 100%;
 								overflow: hidden;
 							}
-							
+
+							.pg-iframe-wrap {
+								width: 100%;
+								aspect-ratio: 16/9;
+								background: #000;
+								max-height: 100%;
+							}
+
 							.pg-iframe-wrap.is-thumbnail {
 								aspect-ratio: unset;
 								height: 100%;
@@ -293,32 +289,32 @@
 							}
 
 							.pg-credits {
-								margin: 0 0 16px 0;
+								margin: 0 0 24px 0;
 							}
 
 							.pg-credits-title {
-								font-size: 0.62em;
+								font-size: 0.78em;
 								letter-spacing: 0.18rem;
 								text-transform: uppercase;
 								color: #fff;
 								font-weight: 600;
-								margin: 0 0 10px 0;
+								margin: 0 0 14px 0;
 							}
 
 							.pg-credits p {
-								font-size: 0.78em;
-								line-height: 1.6;
-								opacity: 0.6;
+								font-size: 1em;
+								line-height: 1.9;
+								opacity: 0.65;
 								margin: 0;
 							}
 
 							.pg-desc {
-								font-size: 0.78em;
-								line-height: 1.6;
-								opacity: 0.55;
-								margin: 0 0 18px 0;
+								font-size: 1em;
+								line-height: 1.9;
+								opacity: 0.6;
+								margin: 0 0 26px 0;
 								border-top: 1px solid rgba(255,255,255,0.08);
-								padding-top: 16px;
+								padding-top: 22px;
 							}
 
 							.pg-tags {
@@ -328,15 +324,14 @@
 							}
 
 							.pg-tag {
-								font-size: 0.6em;
+								font-size: 0.72em;
 								letter-spacing: 0.12rem;
 								text-transform: uppercase;
 								border: 1px solid rgba(255,255,255,0.2);
-								padding: 4px 10px;
+								padding: 6px 12px;
 								border-radius: 2px;
 								opacity: 0.5;
 							}
-
 							/* Bottom nav */
 							.pg-nav {
 								flex: 0 0 auto;
