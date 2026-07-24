@@ -203,7 +203,7 @@
 								height: 100vh;
 								max-width: 1400px;
 								margin: 0 auto;
-								padding: 50px 50px 20px;
+								padding: 40px 50px 24px;
 								box-sizing: border-box;
 								overflow: hidden;
 							}
@@ -241,12 +241,12 @@
 							.pg-body {
 								flex: 1 1 auto;
 								display: flex;
-								gap: 48px;
+								gap: 40px;
 								min-height: 0;
 							}
 
 							.pg-video-col {
-								flex: 1 1 50%;
+								flex: 1 1 60%;
 								display: flex;
 								align-items: center;
 								min-width: 0;
@@ -257,6 +257,12 @@
 								aspect-ratio: 16/9;
 								background: #000;
 								max-height: 100%;
+								max-width: 100%;
+							}
+
+							.pg-video-col {
+								max-height: 100%;
+								overflow: hidden;
 							}
 
 							.pg-iframe-wrap.is-thumbnail {
@@ -274,42 +280,42 @@
 							}
 
 							.pg-info-col {
-								flex: 1 1 50%;
+								flex: 1 1 40%;
 								display: flex;
 								flex-direction: column;
-								justify-content: center;
+								justify-content: flex-start;
 								overflow-y: auto;
 								min-width: 0;
 								padding-right: 8px;
 							}
 
 							.pg-credits {
-								margin: 0 0 20px 0;
+								margin: 0 0 14px 0;
 							}
 
 							.pg-credits-title {
-								font-size: 0.65em;
-								letter-spacing: 0.2rem;
+								font-size: 0.55em;
+								letter-spacing: 0.18rem;
 								text-transform: uppercase;
 								color: #fff;
 								font-weight: 600;
-								margin: 0 0 10px 0;
+								margin: 0 0 8px 0;
 							}
 
 							.pg-credits p {
-								font-size: 0.78em;
-								line-height: 1.7;
+								font-size: 0.68em;
+								line-height: 1.5;
 								opacity: 0.6;
 								margin: 0;
 							}
 
 							.pg-desc {
-								font-size: 0.82em;
-								line-height: 1.7;
+								font-size: 0.7em;
+								line-height: 1.5;
 								opacity: 0.55;
-								margin: 0 0 20px 0;
+								margin: 0 0 16px 0;
 								border-top: 1px solid rgba(255,255,255,0.08);
-								padding-top: 18px;
+								padding-top: 14px;
 							}
 
 							.pg-tags {
