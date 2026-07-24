@@ -1363,10 +1363,10 @@ input, select, textarea {
 
 				#header nav ul li a {
 					display: block;
-					width: 7.5rem;
+					width: auto;
 					height: 2.75rem;
 					line-height: 2.75rem;
-					padding: 0 0 0 0.2rem;
+					padding: 0 1.5rem 0 1.7rem;
 					text-align: center;
 					text-transform: uppercase;
 					letter-spacing: 0.2rem;
@@ -1375,8 +1375,8 @@ input, select, textarea {
 				}
 
 				#header nav ul li a {
-					width: 100%;
-					padding: 0 0 0 0.2rem;
+					 width: 100%;
+   					 padding: 0 1.5rem 0 1.7rem;
 				}
 
 					#header nav ul li a:hover {
