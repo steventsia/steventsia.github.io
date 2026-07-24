@@ -720,13 +720,14 @@
 								<div id="depthsOverlay" class="pg-overlay">
 									<a class="pg-close" onclick="depthsCloseOverlay()">&times;</a>
 									<div class="pg-view depths-view">
-										<div class="pg-iframe-wrap is-thumbnail">
+										<div class="pg-iframe-wrap is-thumbnail" style="position:relative;">
 											<img id="depthsOverlayImg" src="" alt="DEPTHS installation" style="width:100%;height:auto;display:block;object-fit:contain;" />
+											<button class="depths-carousel-btn prev" style="position:absolute;left:10px;top:50%;" onclick="event.stopPropagation(); depthsNav(-1)">&#8592;</button>
+											<button class="depths-carousel-btn next" style="position:absolute;right:10px;top:50%;" onclick="event.stopPropagation(); depthsNav(1)">&#8594;</button>
 										</div>
 										<div class="pg-nav" id="depthsOverlayNav"></div>
 									</div>
 								</div>
-
 								<script>
 									var depthsImages = [
 										"images/Depths_01.JPG",
@@ -744,6 +745,7 @@
 									}
 
 									function depthsOpen(index) {
+										depthsCurrentIndex = index;
 										depthsRender(index);
 										var depthsEl = document.getElementById('depths');
 										var overlay = document.getElementById('depthsOverlay');
@@ -753,9 +755,10 @@
 										document.body.style.overflow = 'hidden';
 										depthsEl.style.overflow = 'hidden';
 									}
-									function depthsRender(index) {
-										document.getElementById('depthsOverlayImg').src = depthsImages[index];
 
+									function depthsRender(index) {
+										depthsCurrentIndex = index;
+										document.getElementById('depthsOverlayImg').src = depthsImages[index];
 										var navEl = document.getElementById('depthsOverlayNav');
 										navEl.innerHTML = '';
 										depthsImages.forEach(function(img, i) {
