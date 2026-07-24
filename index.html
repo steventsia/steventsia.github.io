@@ -230,16 +230,6 @@
 								margin-bottom: 32px;
 							}
 
-							@media screen and (max-height: 1080px) {
-								.pg-iframe-wrap {
-									aspect-ratio: auto;
-									height: 50vh;
-									width: auto;
-									max-width: 100%;
-									margin: 0 auto 24px auto;
-								}
-							}
-
 							.pg-iframe-wrap.is-thumbnail {
 								aspect-ratio: unset;
 								height: auto;
@@ -352,7 +342,19 @@
 								}
 
 								.pg-view {
+									height: auto;
+									min-height: 100%;
 									padding: 50px 20px 60px;
+									overflow: visible;
+								}
+
+								.pg-body {
+									flex-direction: column;
+									overflow: visible;
+								}
+
+								.pg-info-col {
+									overflow-y: visible;
 								}
 							}
 						</style>
@@ -393,16 +395,22 @@
 						<div id="pgOverlay" class="pg-overlay">
 							<a class="pg-close" onclick="pgClose()">&times;</a>
 							<div class="pg-view">
-								<div class="pg-iframe-wrap">
-									<iframe id="pgIframe" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-								</div>
 								<h2 class="pg-project-title" id="pgTitle"></h2>
-								<div class="pg-credits">
-									<p class="pg-credits-title">Credits</p>
-									<p id="pgCredits"></p>
+								<div class="pg-body">
+									<div class="pg-video-col">
+										<div class="pg-iframe-wrap">
+											<iframe id="pgIframe" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+										</div>
+									</div>
+									<div class="pg-info-col">
+										<div class="pg-credits">
+											<p class="pg-credits-title">Credits</p>
+											<p id="pgCredits"></p>
+										</div>
+										<p class="pg-desc" id="pgDesc"></p>
+										<div class="pg-tags" id="pgTags"></div>
+									</div>
 								</div>
-								<p class="pg-desc" id="pgDesc"></p>
-								<div class="pg-tags" id="pgTags"></div>
 								<div class="pg-nav" id="pgNav"></div>
 							</div>
 						</div>
