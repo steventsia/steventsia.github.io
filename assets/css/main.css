@@ -1269,6 +1269,16 @@ input, select, textarea {
 		text-align: center;
 	}
 
+	#header {
+		display: flex !important;
+	}
+
+	body.is-article-visible #header {
+		opacity: 1 !important;
+		transform: none !important;
+		filter: none !important;
+	}
+
 		#header > * {
 			-moz-transition: opacity 0.325s ease-in-out;
 			-webkit-transition: opacity 0.325s ease-in-out;
