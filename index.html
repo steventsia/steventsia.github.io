@@ -31,15 +31,35 @@
 						</div>
 						<nav>
 							<ul>
-								<li><a href="#intro">About</a></li>
+								<li><a href="#intro" onclick="resetAboutView()">About</a></li>
 								<li><a href="#work" onclick="resetPortfolioView()">Portfolio</a></li>
-								<li><a href="#depths">Depths</a></li>
+								<li><a href="#depths" onclick="resetDepthsView()">Depths</a></li>
 							</ul>
 							<ul>
-								<li><a href="#contact">Contact</a></li>
+								<li><a href="#contact" onclick="resetContactView()">Contact</a></li>
 							</ul>
 						</nav>
 					</header>
+
+					<script>
+						function resetAboutView() {
+							var introEl = document.getElementById('intro');
+							if (introEl) introEl.scrollTop = 0;
+						}
+
+						function resetDepthsView() {
+							if (typeof depthsCloseOverlay === 'function') depthsCloseOverlay();
+							var depthsEl = document.getElementById('depths');
+							if (depthsEl) depthsEl.scrollTop = 0;
+						}
+
+						function resetContactView() {
+							var form = document.getElementById('contact-form');
+							if (form) form.reset();
+							var status = document.getElementById('form-status');
+							if (status) status.textContent = '';
+						}
+					</script>
 
 				<!-- Main -->
 					<div id="main">
@@ -946,9 +966,18 @@
 										document.getElementById('depths').style.overflow = 'auto';
 									}
 
+									document.addEventListener('click', function(e) {
+										var overlay = document.getElementById('depthsOverlay');
+										if (overlay.style.display !== 'flex') return;
+										if (e.target.closest('.depths-slide')) return;
+										var view = document.querySelector('#depthsOverlay .pg-view');
+										if (!view.contains(e.target)) depthsCloseOverlay();
+									});
+
 									document.addEventListener('keydown', function(e) {
 										if (e.key === 'Escape') depthsCloseOverlay();
 									});
+
 								</script>
 							</article>
 
