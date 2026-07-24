@@ -704,16 +704,22 @@
 									var depthsVideoId = "1212250572";
 									var depthsVideoUrl = 'https://player.vimeo.com/video/' + depthsVideoId + '?title=0&byline=0&portrait=0&color=ffffff';
 
-									document.querySelectorAll('nav a').forEach(function(link) {
-										link.addEventListener('click', function() {
-											var iframe = document.getElementById('depthsHeroIframe');
-											if (this.getAttribute('href') === '#depths') {
-												iframe.src = depthsVideoUrl;
+									var depthsSection = document.getElementById('depths');
+									var depthsIframe = document.getElementById('depthsHeroIframe');
+
+									var depthsObserver = new IntersectionObserver(function(entries) {
+										entries.forEach(function(entry) {
+											if (entry.isIntersecting) {
+												if (!depthsIframe.src) {
+													depthsIframe.src = depthsVideoUrl;
+												}
 											} else {
-												iframe.src = '';
+												depthsIframe.src = '';
 											}
 										});
-									});
+									}, { threshold: 0.1 });
+
+									depthsObserver.observe(depthsSection);
 								</script>
 
 								<!-- Description -->
