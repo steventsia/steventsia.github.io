@@ -571,7 +571,7 @@
 
 									.depths-hero {
 										width: 100%;
-										max-width: 45rem;
+										max-width: 58rem;
 										margin: 0 auto 28px auto;
 										aspect-ratio: 16/9;
 										background: #000;
@@ -651,6 +651,10 @@
 										color: #fff;
 										width: 40px;
 										height: 40px;
+										padding: 0;
+										margin: 0;
+										box-sizing: border-box;
+										line-height: 1;
 										border-radius: 50%;
 										cursor: pointer;
 										font-size: 16px;
@@ -672,6 +676,11 @@
 									@media screen and (max-width: 736px) {
 										.depths-slide { width: 88%; }
 									}
+
+									.depths-view {
+										max-width: 1100px;
+									}
+
 								</style>
 
 								<!-- Hero Video -->
@@ -710,7 +719,7 @@
 								<!-- Depths Image Overlay (matches portfolio pop-up style) -->
 								<div id="depthsOverlay" class="pg-overlay">
 									<a class="pg-close" onclick="depthsCloseOverlay()">&times;</a>
-									<div class="pg-view">
+									<div class="pg-view depths-view">
 										<div class="pg-iframe-wrap is-thumbnail">
 											<img id="depthsOverlayImg" src="" alt="DEPTHS installation" style="width:100%;height:auto;display:block;object-fit:contain;" />
 										</div>
@@ -736,10 +745,14 @@
 
 									function depthsOpen(index) {
 										depthsRender(index);
-										document.getElementById('depthsOverlay').style.display = 'block';
+										var depthsEl = document.getElementById('depths');
+										var overlay = document.getElementById('depthsOverlay');
+										overlay.style.top = depthsEl.scrollTop + 'px';
+										overlay.style.display = 'block';
+										overlay.scrollTop = 0;
 										document.body.style.overflow = 'hidden';
+										depthsEl.style.overflow = 'hidden';
 									}
-
 									function depthsRender(index) {
 										document.getElementById('depthsOverlayImg').src = depthsImages[index];
 
@@ -765,6 +778,7 @@
 									function depthsCloseOverlay() {
 										document.getElementById('depthsOverlay').style.display = 'none';
 										document.body.style.overflow = '';
+										document.getElementById('depths').style.overflow = 'auto';
 									}
 
 									document.addEventListener('keydown', function(e) {
