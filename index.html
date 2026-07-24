@@ -181,7 +181,7 @@
 							/* Project view */
 							.pg-overlay {
 								display: none;
-								position: absolute;
+								position: fixed;
 								z-index: 9999;
 								top: 0;
 								left: 0;
@@ -293,28 +293,28 @@
 							}
 
 							.pg-credits-title {
-								font-size: 0.78em;
+								font-size: 0.7em;
 								letter-spacing: 0.18rem;
 								text-transform: uppercase;
 								color: #fff;
 								font-weight: 600;
-								margin: 0 0 14px 0;
+								margin: 0 0 12px 0;
 							}
 
 							.pg-credits p {
-								font-size: 1em;
-								line-height: 1.9;
+								font-size: 0.86em;
+								line-height: 1.75;
 								opacity: 0.65;
 								margin: 0;
 							}
 
 							.pg-desc {
-								font-size: 1em;
-								line-height: 1.9;
+								font-size: 0.86em;
+								line-height: 1.75;
 								opacity: 0.6;
-								margin: 0 0 26px 0;
+								margin: 0 0 22px 0;
 								border-top: 1px solid rgba(255,255,255,0.08);
-								padding-top: 22px;
+								padding-top: 20px;
 							}
 
 							.pg-tags {
@@ -518,7 +518,6 @@
 								pgRender(index);
 								var workEl = document.getElementById('work');
 								var overlay = document.getElementById('pgOverlay');
-								overlay.style.top = workEl.scrollTop + 'px';
 								overlay.style.display = 'block';
 								overlay.scrollTop = 0;
 								document.body.style.overflow = 'hidden';
