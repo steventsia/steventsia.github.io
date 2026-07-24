@@ -32,7 +32,7 @@
 						<nav>
 							<ul>
 								<li><a href="#intro">About</a></li>
-								<li><a href="#work">Portfolio</a></li>
+								<li><a href="#work" onclick="resetPortfolioView()">Portfolio</a></li>
 								<li><a href="#depths">Depths</a></li>
 							</ul>
 							<ul>
@@ -56,7 +56,7 @@
 
 								A graduate of Vancouver Film School's Sound Design program and a semi-finalist in the Airwiggles Sound Design Competition, Steven brings formal training and hands-on production experience to every project, applying the same attention to the craft whether working independently or within a full production team. <br> <br>
 
-								<a href="#work">Check out my portfolio.</a> </p>
+								<a href="#work" onclick="resetPortfolioView()">Check out my portfolio.</a> </p>
 								
 							</article>
 
@@ -601,9 +601,24 @@
 								document.getElementById('work').style.overflow = 'auto';
 							}
 
+							document.addEventListener('click', function(e) {
+								var overlay = document.getElementById('pgOverlay');
+								if (overlay.style.display !== 'flex') return;
+								if (e.target.closest('.pg-cell')) return;
+								var view = document.querySelector('#pgOverlay .pg-view');
+								if (!view.contains(e.target)) pgClose();
+							});
+
+							function resetPortfolioView() {
+								pgClose();
+								var workEl = document.getElementById('work');
+								if (workEl) workEl.scrollTop = 0;
+							}
+
 							document.addEventListener('keydown', function(e) {
 								if (e.key === 'Escape') pgClose();
 							});
+
 						</script>
 					</article>
 
