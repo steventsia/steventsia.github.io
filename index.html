@@ -190,6 +190,10 @@
 								background: rgba(0,0,0,0.97);
 								overflow-y: auto;
 								animation: pgFade 0.3s ease;
+								flex-direction: column;
+								align-items: center;
+								justify-content: center;
+								justify-content: safe center;
 							}
 
 							@keyframes pgFade {
@@ -202,8 +206,8 @@
 								flex-direction: column;
 								height: auto;
 								max-height: 100vh;
+								width: 100%;
 								max-width: 1400px;
-								margin: 0 auto;
 								padding: 40px 50px 24px;
 								box-sizing: border-box;
 								overflow: visible;
@@ -338,7 +342,7 @@
 								flex: 0 0 auto;
 								border-top: 1px solid rgba(255,255,255,0.1);
 								padding-top: 18px;
-								margin-top: 20px;
+								margin-top: 56px;
 								text-align: center;
 								line-height: 2;
 							}
@@ -519,7 +523,7 @@
 								pgRender(index);
 								var workEl = document.getElementById('work');
 								var overlay = document.getElementById('pgOverlay');
-								overlay.style.display = 'block';
+								overlay.style.display = 'flex';
 								overlay.scrollTop = 0;
 								document.body.style.overflow = 'hidden';
 								workEl.style.overflow = 'hidden';
@@ -791,9 +795,9 @@
 
 								<!-- Description -->
 								<p class="depths-desc">
-									DEPTHS is a project by a multi-disciplinary, multi-generational, and multi-cultural team of artists under the collective Audio Essentia. It took 4 months of learning new techniques, teamwork, and sleepless nights to bring this 32-speaker audiovisual experience to audiences.
+									DEPTHS is a project by a multi-disciplinary, multi-generational, and multi-cultural team of artists under the collective Audio Essentia. It took 4 months of learning new techniques, teamwork, and sleepless nights to bring this 32-speaker audiovisual experience to audiences. <br><br>
 
-									Throughout this project, I learned that there is always a solution to a problem, no matter how tight the deadline may be. Our team faced many bugs, setup changes, and new software to learn (such as Resolume), but we were able to push through because we had a goal in mind and a team to back each other up when times felt bleak.
+									Throughout this project, I learned that there is always a solution to a problem, no matter how tight the deadline may be. Our team faced many bugs, setup changes, and new software to learn (such as Resolume), but we were able to push through because we had a goal in mind and a team to back each other up when times felt bleak. <br><br>
 
 									The project ran at LOBE Studios as a solo showing, and returned for festival runs including IndieFest in Vancouver, BC.
 								</p>
@@ -869,7 +873,7 @@
 										var depthsEl = document.getElementById('depths');
 										var overlay = document.getElementById('depthsOverlay');
 										overlay.style.top = depthsEl.scrollTop + 'px';
-										overlay.style.display = 'block';
+										overlay.style.display = 'flex';
 										overlay.scrollTop = 0;
 										document.body.style.overflow = 'hidden';
 										depthsEl.style.overflow = 'hidden';
