@@ -758,6 +758,24 @@
 										c.scrollBy({ left: dir * 420, behavior: 'smooth' });
 									}
 
+									(function() {
+										var carousel = document.getElementById('depthsCarousel');
+										var touchStartX = 0;
+										var touchEndX = 0;
+
+										carousel.addEventListener('touchstart', function(e) {
+											touchStartX = e.changedTouches[0].screenX;
+										}, { passive: true });
+
+										carousel.addEventListener('touchend', function(e) {
+											touchEndX = e.changedTouches[0].screenX;
+											var diff = touchStartX - touchEndX;
+											if (Math.abs(diff) > 40) {
+												depthsScroll(diff > 0 ? 1 : -1);
+											}
+										}, { passive: true });
+									})();
+
 									function depthsOpen(index) {
 										depthsCurrentIndex = index;
 										depthsRender(index);
@@ -796,6 +814,24 @@
 										var next = (depthsCurrentIndex + dir + depthsImages.length) % depthsImages.length;
 										depthsRender(next);
 									}
+
+									(function() {
+										var overlayImg = document.getElementById('depthsOverlayImg');
+										var touchStartX = 0;
+										var touchEndX = 0;
+
+										overlayImg.addEventListener('touchstart', function(e) {
+											touchStartX = e.changedTouches[0].screenX;
+										}, { passive: true });
+
+										overlayImg.addEventListener('touchend', function(e) {
+											touchEndX = e.changedTouches[0].screenX;
+											var diff = touchStartX - touchEndX;
+											if (Math.abs(diff) > 50) {
+												depthsNav(diff > 0 ? 1 : -1);
+											}
+										}, { passive: true });
+									})();
 
 									function depthsCloseOverlay() {
 										document.getElementById('depthsOverlay').style.display = 'none';
