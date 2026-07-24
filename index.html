@@ -611,8 +611,8 @@
 
 									.depths-slide {
 										flex: 0 0 auto;
-										width: 100%;
-										max-width: 100%;
+										width: 75%;
+										max-width: 560px;
 										aspect-ratio: 16/9;
 										background: #000;
 										border-radius: 3px;
@@ -680,9 +680,14 @@
 										display: flex;
 									}
 
+									.depths-lightbox-inner {
+										width: 100%;
+										max-width: 70rem;
+									}
+
 									.depths-lightbox-inner img {
-										max-width: 90vw;
-										max-height: 85vh;
+										width: 100%;
+										aspect-ratio: 16/9;
 										object-fit: contain;
 										display: block;
 									}
@@ -709,6 +714,10 @@
 								</style>
 
 								<!-- Hero Video -->
+								<div class="depths-hero">
+									<iframe id="depthsHeroIframe" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+								</div>
+
 								<script>
 									var depthsVideoId = "1212250572";
 									document.getElementById('depthsHeroIframe').src =
