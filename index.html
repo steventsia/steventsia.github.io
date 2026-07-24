@@ -674,7 +674,19 @@
 
 						
 									@media screen and (max-width: 736px) {
-										.depths-slide { width: 88%; }
+										.depths-carousel-wrap {
+											padding: 0 8px;
+										}
+
+										.depths-slide {
+											width: 92%;
+										}
+
+										.depths-carousel-btn {
+											width: 32px;
+											height: 32px;
+											font-size: 13px;
+										}
 									}
 
 									.depths-view {
@@ -739,6 +751,8 @@
 										"images/Depths_07.jpg"
 									];
 
+									var depthsCurrentIndex = 0;
+
 									function depthsScroll(dir) {
 										var c = document.getElementById('depthsCarousel');
 										c.scrollBy({ left: dir * 420, behavior: 'smooth' });
@@ -776,6 +790,11 @@
 											})(i);
 											navEl.appendChild(item);
 										});
+									}
+
+									function depthsNav(dir) {
+										var next = (depthsCurrentIndex + dir + depthsImages.length) % depthsImages.length;
+										depthsRender(next);
 									}
 
 									function depthsCloseOverlay() {
