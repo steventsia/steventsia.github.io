@@ -621,13 +621,6 @@
 								document.getElementById('work').style.overflow = 'auto';
 							}
 
-							document.addEventListener('click', function(e) {
-								var overlay = document.getElementById('pgOverlay');
-								if (overlay.style.display !== 'flex') return;
-								if (e.target.closest('.pg-cell')) return;
-								var view = document.querySelector('#pgOverlay .pg-view');
-								if (!view.contains(e.target)) pgClose();
-							});
 
 							function resetPortfolioView() {
 								pgClose();
@@ -966,13 +959,6 @@
 										document.getElementById('depths').style.overflow = 'auto';
 									}
 
-									document.addEventListener('click', function(e) {
-										var overlay = document.getElementById('depthsOverlay');
-										if (overlay.style.display !== 'flex') return;
-										if (e.target.closest('.depths-slide')) return;
-										var view = document.querySelector('#depthsOverlay .pg-view');
-										if (!view.contains(e.target)) depthsCloseOverlay();
-									});
 
 									document.addEventListener('keydown', function(e) {
 										if (e.key === 'Escape') depthsCloseOverlay();
@@ -1090,6 +1076,35 @@
 
 				animate();
 			})();
+		</script>
+
+		<!-- Unified background click behavior -->
+		<script>
+			document.addEventListener('click', function(e) {
+				var pgOverlay = document.getElementById('pgOverlay');
+				var depthsOverlay = document.getElementById('depthsOverlay');
+
+				if (pgOverlay && pgOverlay.style.display === 'flex' && !e.target.closest('.pg-view') && !e.target.closest('.pg-cell')) {
+					pgClose();
+					e.stopPropagation();
+					e.stopImmediatePropagation();
+					return;
+				}
+
+				if (depthsOverlay && depthsOverlay.style.display === 'flex' && !e.target.closest('.pg-view') && !e.target.closest('.depths-slide')) {
+					depthsCloseOverlay();
+					e.stopPropagation();
+					e.stopImmediatePropagation();
+					return;
+				}
+
+				if (!e.target.closest('#header') && !e.target.closest('#main article')) {
+					['intro', 'work', 'depths', 'contact'].forEach(function(id) {
+						var el = document.getElementById(id);
+						if (el) el.scrollTop = 0;
+					});
+				}
+			}, true);
 		</script>
 
 	</body>
