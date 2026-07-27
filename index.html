@@ -31,15 +31,35 @@
 						</div>
 						<nav>
 							<ul>
-								<li><a href="#intro">About</a></li>
-								<li><a href="#work">Portfolio</a></li>
-								<li><a href="#depths">Depths</a></li>
+								<li><a href="#intro" onclick="resetAboutView()">About</a></li>
+								<li><a href="#work" onclick="resetPortfolioView()">Portfolio</a></li>
+								<li><a href="#depths" onclick="resetDepthsView()">Depths</a></li>
 							</ul>
 							<ul>
-								<li><a href="#contact">Contact</a></li>
+								<li><a href="#contact" onclick="resetContactView()">Contact</a></li>
 							</ul>
 						</nav>
 					</header>
+
+					<script>
+						function resetAboutView() {
+							var introEl = document.getElementById('intro');
+							if (introEl) introEl.scrollTop = 0;
+						}
+
+						function resetDepthsView() {
+							if (typeof depthsCloseOverlay === 'function') depthsCloseOverlay();
+							var depthsEl = document.getElementById('depths');
+							if (depthsEl) depthsEl.scrollTop = 0;
+						}
+
+						function resetContactView() {
+							var form = document.getElementById('contact-form');
+							if (form) form.reset();
+							var status = document.getElementById('form-status');
+							if (status) status.textContent = '';
+						}
+					</script>
 
 				<!-- Main -->
 					<div id="main">
@@ -56,7 +76,7 @@
 
 								A graduate of Vancouver Film School's Sound Design program and a semi-finalist in the Airwiggles Sound Design Competition, Steven brings formal training and hands-on production experience to every project, applying the same attention to the craft whether working independently or within a full production team. <br> <br>
 
-								<a href="#work">Check out my portfolio.</a> </p>
+								<a href="#work" onclick="resetPortfolioView()">Check out my portfolio.</a> </p>
 								
 							</article>
 
@@ -181,7 +201,7 @@
 							/* Project view */
 							.pg-overlay {
 								display: none;
-								position: absolute;
+								position: fixed;
 								z-index: 9999;
 								top: 0;
 								left: 0;
@@ -190,6 +210,10 @@
 								background: rgba(0,0,0,0.97);
 								overflow-y: auto;
 								animation: pgFade 0.3s ease;
+								flex-direction: column;
+								align-items: center;
+								justify-content: center;
+								justify-content: safe center;
 							}
 
 							@keyframes pgFade {
@@ -198,15 +222,21 @@
 							}
 
 							.pg-view {
-								max-width: 860px;
-								margin: 0 auto;
-								padding: 60px 30px 80px;
+								display: flex;
+								flex-direction: column;
+								height: auto;
+								max-height: 100vh;
+								width: 100%;
+								max-width: 1400px;
+								padding: 40px 50px 24px;
+								box-sizing: border-box;
+								overflow: visible;
 							}
 
 							.pg-close {
-								position: sticky;
+								position: absolute;
 								top: 22px;
-								float: right;
+								right: 28px;
 								color: rgba(255,255,255,0.4);
 								font-size: 26px;
 								cursor: pointer;
@@ -214,8 +244,6 @@
 								z-index: 10;
 								border-bottom: none;
 								line-height: 1;
-								margin-right: 28px;
-								display: block;
 							}
 
 							.pg-close:hover {
@@ -223,34 +251,66 @@
 								border-bottom: none;
 							}
 
-							.pg-iframe-wrap {
-								width: 100%;
-								aspect-ratio: 16/9;
-								background: #000;
-								margin-bottom: 32px;
-							}
-
-							.pg-iframe-wrap.is-thumbnail {
-								aspect-ratio: unset;
-								height: auto;
-							}
-
-							.pg-iframe-wrap iframe {
-								width: 100%;
-								height: 100%;
-								border: none;
-								display: block;
-							}
-
 							.pg-project-title {
+								flex: 0 0 auto;
 								font-size: 1.1em;
 								letter-spacing: 0.25rem;
 								text-transform: uppercase;
 								color: #fff;
-								margin: 0 0 20px 0;
+								margin: 0 0 40px 0;
 								font-weight: 600;
 								border-bottom: 1px solid rgba(255,255,255,0.15);
 								padding-bottom: 16px;
+							}
+
+							.pg-body {
+								flex: 0 0 auto;
+								display: flex;
+								gap: 40px;
+								min-height: 0;
+							}
+
+							.pg-video-col {
+								flex: 1 1 60%;
+								display: flex;
+								align-items: flex-start;
+								justify-content: flex-start;
+								min-width: 0;
+								min-height: 0;
+								max-height: 100%;
+								overflow: hidden;
+							}
+
+							.pg-iframe-wrap {
+								width: 100%;
+								aspect-ratio: 16/9;
+								background: #000;
+								max-height: 100%;
+							}
+
+							.pg-iframe-wrap.is-thumbnail {
+								aspect-ratio: unset;
+								height: 100%;
+							}
+
+							.pg-iframe-wrap iframe,
+							.pg-iframe-wrap img {
+								width: 100%;
+								height: 100%;
+								border: none;
+								display: block;
+								object-fit: cover;
+							}
+
+							.pg-info-col {
+								flex: 1 1 40%;
+								display: flex;
+								flex-direction: column;
+								justify-content: flex-start;
+								overflow-y: auto;
+								min-width: 0;
+								max-height: 100%;
+								padding-right: 8px;
 							}
 
 							.pg-credits {
@@ -258,26 +318,26 @@
 							}
 
 							.pg-credits-title {
-								font-size: 0.65em;
-								letter-spacing: 0.2rem;
+								font-size: 0.7em;
+								letter-spacing: 0.18rem;
 								text-transform: uppercase;
 								color: #fff;
 								font-weight: 600;
-								margin: 0 0 10px 0;
+								margin: 0 0 12px 0;
 							}
 
 							.pg-credits p {
-								font-size: 0.78em;
-								line-height: 1.8;
-								opacity: 0.6;
+								font-size: 0.86em;
+								line-height: 1.75;
+								opacity: 0.65;
 								margin: 0;
 							}
 
 							.pg-desc {
-								font-size: 0.82em;
-								line-height: 1.8;
-								opacity: 0.55;
-								margin: 0 0 28px 0;
+								font-size: 0.86em;
+								line-height: 1.75;
+								opacity: 0.6;
+								margin: 0 0 22px 0;
 								border-top: 1px solid rgba(255,255,255,0.08);
 								padding-top: 20px;
 							}
@@ -286,25 +346,25 @@
 								display: flex;
 								flex-wrap: wrap;
 								gap: 8px;
-								margin-bottom: 40px;
 							}
 
 							.pg-tag {
-								font-size: 0.6em;
+								font-size: 0.72em;
 								letter-spacing: 0.12rem;
 								text-transform: uppercase;
 								border: 1px solid rgba(255,255,255,0.2);
-								padding: 4px 10px;
+								padding: 6px 12px;
 								border-radius: 2px;
 								opacity: 0.5;
 							}
-
 							/* Bottom nav */
 							.pg-nav {
+								flex: 0 0 auto;
 								border-top: 1px solid rgba(255,255,255,0.1);
-								padding-top: 24px;
+								padding-top: 18px;
+								margin-top: 56px;
 								text-align: center;
-								line-height: 2.2;
+								line-height: 2;
 							}
 
 							.pg-nav-item {
@@ -342,7 +402,19 @@
 								}
 
 								.pg-view {
+									height: auto;
+									min-height: 100%;
 									padding: 50px 20px 60px;
+									overflow: visible;
+								}
+
+								.pg-body {
+									flex-direction: column;
+									overflow: visible;
+								}
+
+								.pg-info-col {
+									overflow-y: visible;
 								}
 							}
 						</style>
@@ -383,16 +455,22 @@
 						<div id="pgOverlay" class="pg-overlay">
 							<a class="pg-close" onclick="pgClose()">&times;</a>
 							<div class="pg-view">
-								<div class="pg-iframe-wrap">
-									<iframe id="pgIframe" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-								</div>
 								<h2 class="pg-project-title" id="pgTitle"></h2>
-								<div class="pg-credits">
-									<p class="pg-credits-title">Credits</p>
-									<p id="pgCredits"></p>
+								<div class="pg-body">
+									<div class="pg-video-col">
+										<div class="pg-iframe-wrap">
+											<iframe id="pgIframe" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+										</div>
+									</div>
+									<div class="pg-info-col">
+										<div class="pg-credits">
+											<p class="pg-credits-title">Credits</p>
+											<p id="pgCredits"></p>
+										</div>
+										<p class="pg-desc" id="pgDesc"></p>
+										<div class="pg-tags" id="pgTags"></div>
+									</div>
 								</div>
-								<p class="pg-desc" id="pgDesc"></p>
-								<div class="pg-tags" id="pgTags"></div>
 								<div class="pg-nav" id="pgNav"></div>
 							</div>
 						</div>
@@ -466,7 +544,7 @@
 								var workEl = document.getElementById('work');
 								var overlay = document.getElementById('pgOverlay');
 								overlay.style.top = workEl.scrollTop + 'px';
-								overlay.style.display = 'block';
+								overlay.style.display = 'flex';
 								overlay.scrollTop = 0;
 								document.body.style.overflow = 'hidden';
 								workEl.style.overflow = 'hidden';
@@ -543,9 +621,17 @@
 								document.getElementById('work').style.overflow = 'auto';
 							}
 
+
+							function resetPortfolioView() {
+								pgClose();
+								var workEl = document.getElementById('work');
+								if (workEl) workEl.scrollTop = 0;
+							}
+
 							document.addEventListener('keydown', function(e) {
 								if (e.key === 'Escape') pgClose();
 							});
+
 						</script>
 					</article>
 
@@ -575,6 +661,16 @@
 										margin: 0 auto 28px auto;
 										aspect-ratio: 16/9;
 										background: #000;
+									}
+
+									@media screen and (max-height: 1080px) {
+										.depths-hero {
+											aspect-ratio: auto;
+											height: 45vh;
+											width: auto;
+											max-width: 100%;
+											margin: 0 auto 20px auto;
+										}
 									}
 
 									.depths-hero iframe {
@@ -621,6 +717,15 @@
 										overflow: hidden;
 										cursor: pointer;
 										position: relative;
+									}
+
+									@media screen and (max-height: 1080px) {
+										.depths-slide {
+											width: auto;
+											height: 32vh;
+											max-width: none;
+											aspect-ratio: 16/9;
+										}
 									}
 
 									.depths-slide iframe,
@@ -719,7 +824,11 @@
 
 								<!-- Description -->
 								<p class="depths-desc">
-									DEPTHS is a project by a multi-disciplinary, multi-generational, and multi-cultural team of artists under the collective Audio Essentia. It took 4 months of iteration and sleepless nights to bring this 32 speaker audiovisual experience to audiences. We are currently developing the next iteration of DEPTHS.
+									DEPTHS is a project by a multi-disciplinary, multi-generational, and multi-cultural team of artists under the collective Audio Essentia. This project took 4 months of learning new techniques, teamwork, and sleepless nights to bring this 32-speaker audiovisual experience to audiences. <br><br>
+
+									Throughout this project, I learned that there is always a solution to a problem, no matter how tight the deadline may be - Our team faced many bugs, setup changes, and new techniques/softwares to learn (such as Resolume). No matter how challenging the situation became, we persevered and found creative ways to overcome each obstacle. <br><br>
+
+									The project ran at LOBE Studios as a solo showing, and returned for festival runs including IndieFest in Vancouver, BC. We are currently in talks to bring the project to other venues in Canada with revised visuals and sounds. <br><br>
 								</p>
 
 								<!-- Carousel -->
@@ -796,7 +905,7 @@
 										var depthsEl = document.getElementById('depths');
 										var overlay = document.getElementById('depthsOverlay');
 										overlay.style.top = depthsEl.scrollTop + 'px';
-										overlay.style.display = 'block';
+										overlay.style.display = 'flex';
 										overlay.scrollTop = 0;
 										document.body.style.overflow = 'hidden';
 										depthsEl.style.overflow = 'hidden';
@@ -853,9 +962,11 @@
 										document.getElementById('depths').style.overflow = 'auto';
 									}
 
+
 									document.addEventListener('keydown', function(e) {
 										if (e.key === 'Escape') depthsCloseOverlay();
 									});
+
 								</script>
 							</article>
 
@@ -968,6 +1079,35 @@
 
 				animate();
 			})();
+		</script>
+
+		<!-- Unified background click behavior -->
+		<script>
+			document.addEventListener('click', function(e) {
+				var pgOverlay = document.getElementById('pgOverlay');
+				var depthsOverlay = document.getElementById('depthsOverlay');
+
+				if (pgOverlay && pgOverlay.style.display === 'flex' && !e.target.closest('.pg-view') && !e.target.closest('.pg-cell')) {
+					pgClose();
+					e.stopPropagation();
+					e.stopImmediatePropagation();
+					return;
+				}
+
+				if (depthsOverlay && depthsOverlay.style.display === 'flex' && !e.target.closest('.pg-view') && !e.target.closest('.depths-slide')) {
+					depthsCloseOverlay();
+					e.stopPropagation();
+					e.stopImmediatePropagation();
+					return;
+				}
+
+				if (!e.target.closest('#header') && !e.target.closest('#main article')) {
+					['intro', 'work', 'depths', 'contact'].forEach(function(id) {
+						var el = document.getElementById(id);
+						if (el) el.scrollTop = 0;
+					});
+				}
+			}, true);
 		</script>
 
 	</body>
