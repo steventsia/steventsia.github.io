@@ -137,67 +137,77 @@
 								background: rgba(255, 255, 255, 0.4);
 							}
 
-							/* Grid */
-							.pg-grid {
-								display: grid;
-								grid-template-columns: 1fr 1fr;
-								gap: 3px;
+							/* List + Preview */
+							.pl-wrap {
+								display: flex;
+								gap: 48px;
 								margin-top: 1.5rem;
-								margin-left: -1rem;
-    							margin-right: -1rem;
-								
+								align-items: stretch;
 							}
 
-							.pg-cell {
-								position: relative;
+							.pl-list {
+								flex: 0 0 300px;
+								display: flex;
+								flex-direction: column;
+							}
+
+							.pl-item {
+								padding: 20px 0;
+								border-bottom: 1px solid rgba(255,255,255,0.1);
 								cursor: pointer;
-								overflow: hidden;
-								background: #000;
-								aspect-ratio: 16/9;
-								min-height: 160px
+								opacity: 0.45;
+								transition: opacity 0.25s ease;
 							}
 
-							.pg-cell img {
+							.pl-item:first-child {
+								border-top: 1px solid rgba(255,255,255,0.1);
+							}
+
+							.pl-item:hover,
+							.pl-item.is-active {
+								opacity: 1;
+							}
+
+							.pl-item-title {
+								display: block;
+								font-size: 0.95em;
+								letter-spacing: 0.08rem;
+								text-transform: uppercase;
+								color: #fff;
+								font-weight: 600;
+							}
+
+							.pl-item-sub {
+								display: block;
+								font-size: 0.65em;
+								letter-spacing: 0.15rem;
+								text-transform: uppercase;
+								color: #fff;
+								opacity: 0.5;
+								margin-top: 6px;
+							}
+
+							.pl-preview {
+								flex: 1 1 auto;
+								aspect-ratio: 16/9;
+								background: #000;
+								overflow: hidden;
+								cursor: pointer;
+								min-width: 0;
+							}
+
+							.pl-preview img {
 								width: 100%;
 								height: 100%;
 								object-fit: cover;
 								display: block;
-								transition: transform 0.5s ease, opacity 0.4s ease;
-								opacity: 0.6;
-							}
-
-							.pg-cell:hover img {
-								transform: scale(1.04);
 								opacity: 0.85;
-							}
-
-							.pg-cell-title {
-								position: absolute;
-								inset: 0;
-								display: flex;
-								align-items: center;
-								justify-content: center;
-								opacity: 0;
 								transition: opacity 0.3s ease;
-								background: rgba(0,0,0,0.3);
-								padding: 12px;
-								text-align: center;
-								border: 8px solid rgba(255, 255, 255, 0.25);
 							}
 
-							.pg-cell-title span {
-								font-size: 0.7em;
-								letter-spacing: 0.2rem;
-								text-transform: uppercase;
-								color: #fff;
-								font-weight: 600;
-								line-height: 1.4;
-							}
-
-							.pg-cell:hover .pg-cell-title {
+							.pl-preview:hover img {
 								opacity: 1;
 							}
-
 							/* Project view */
 							.pg-overlay {
 								display: none;
@@ -419,35 +429,41 @@
 							}
 						</style>
 
-						<!-- Thumbnail Grid -->
-						<div class="pg-grid">
-							<div class="pg-cell" onclick="pgOpen(0)">
-								<img src="images/Thumbnail_Warframe.jpg" alt="Warframe: A New War" />
-								<div class="pg-cell-title"><span>Warframe: A New War</span></div>
+						<!-- List + Preview -->
+						<div class="pl-wrap">
+							<div class="pl-list" id="plList">
+								<div class="pl-item is-active" onmouseenter="plPreview(0)" onclick="pgOpen(0)">
+									<span class="pl-item-title">Warframe: A New War</span>
+									<span class="pl-item-sub">Sound Redesign</span>
+								</div>
+								<div class="pl-item" onmouseenter="plPreview(1)" onclick="pgOpen(1)">
+									<span class="pl-item-title">World of Horror</span>
+									<span class="pl-item-sub">Sound Redesign</span>
+								</div>
+								<div class="pl-item" onmouseenter="plPreview(2)" onclick="pgOpen(2)">
+									<span class="pl-item-title">Afloat</span>
+									<span class="pl-item-sub">Technical Sound Design</span>
+								</div>
+								<div class="pl-item" onmouseenter="plPreview(3)" onclick="pgOpen(3)">
+									<span class="pl-item-title">Killer Vacancy</span>
+									<span class="pl-item-sub">Short Film</span>
+								</div>
+								<div class="pl-item" onmouseenter="plPreview(4)" onclick="pgOpen(4)">
+									<span class="pl-item-title">Dance Mom</span>
+									<span class="pl-item-sub">Short Film</span>
+								</div>
+								<div class="pl-item" onmouseenter="plPreview(5)" onclick="pgOpen(5)">
+									<span class="pl-item-title">Knight Terror</span>
+									<span class="pl-item-sub">Feature Film</span>
+								</div>
+								<div class="pl-item" onmouseenter="plPreview(6)" onclick="pgOpen(6)">
+									<span class="pl-item-title">Strain</span>
+									<span class="pl-item-sub">Short Film</span>
+								</div>
 							</div>
-							<div class="pg-cell" onclick="pgOpen(1)">
-								<img src="images/Thumbnail_WOH.jpg" alt="World of Horror" />
-								<div class="pg-cell-title"><span>World of Horror</span></div>
-							</div>
-							<div class="pg-cell" onclick="pgOpen(2)">
-								<img src="images/Thumbnail_Afloat.webp" alt="Afloat" />
-								<div class="pg-cell-title"><span>Afloat</span></div>
-							</div>
-							<div class="pg-cell" onclick="pgOpen(3)">
-								<img src="images/Thumbnail_Killervacancy.jpg" style="object-position: center 40%;" alt="Killer Vacancy" />
-								<div class="pg-cell-title"><span>Killer Vacancy</span></div>
-							</div>
-							<div class="pg-cell" onclick="pgOpen(4)">
-								<img src="images/Thumbnail_dancemom.jpg" style="object-position: center 70%;" alt="Dance Mom" />
-								<div class="pg-cell-title"><span>Dance Mom</span></div>
-							</div>
-							<div class="pg-cell" onclick="pgOpen(5)">
-								<img src="images/Thumbnail_KnightTerror.jpg" style="object-position: center 50%;" alt="Knight Terror" />
-								<div class="pg-cell-title"><span>Knight Terror</span></div>
-							</div>
-							<div class="pg-cell" onclick="pgOpen(6)">
-							    <img src="images/Thumbnail_Strain.jpg" style="object-position: center 50%;" alt="Strain" />
-							    <div class="pg-cell-title"><span>Strain</span></div>
+
+							<div class="pl-preview" onclick="pgOpen(plCurrentPreview)">
+								<img id="plPreviewImg" src="images/Thumbnail_Warframe.jpg" alt="Project preview" />
 							</div>
 						</div>
 
@@ -536,6 +552,28 @@
 							];
 
 							var pgCurrent = 0;
+
+							var plThumbnails = [
+								"images/Thumbnail_Warframe.jpg",
+								"images/Thumbnail_WOH.jpg",
+								"images/Thumbnail_Afloat.webp",
+								"images/Thumbnail_Killervacancy.jpg",
+								"images/Thumbnail_dancemom.jpg",
+								"images/Thumbnail_KnightTerror.jpg",
+								"images/Thumbnail_Strain.jpg"
+							];
+
+							var plCurrentPreview = 0;
+
+							function plPreview(index) {
+								plCurrentPreview = index;
+								document.getElementById('plPreviewImg').src = plThumbnails[index];
+
+								var items = document.querySelectorAll('.pl-item');
+								items.forEach(function(el, i) {
+									el.classList.toggle('is-active', i === index);
+								});
+							}
 
 							function pgOpen(index) {
 								pgCurrent = index;
