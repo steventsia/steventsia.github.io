@@ -142,13 +142,30 @@
 								display: flex;
 								gap: 48px;
 								margin-top: 1.5rem;
-								align-items: stretch;
+								align-items: flex-start;
 							}
 
 							.pl-list {
 								flex: 0 0 300px;
 								display: flex;
 								flex-direction: column;
+								overflow-y: auto;
+								padding-right: 10px;
+								-webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
+								mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
+							}
+
+							.pl-list::-webkit-scrollbar {
+								width: 4px;
+							}
+
+							.pl-list::-webkit-scrollbar-track {
+								background: transparent;
+							}
+
+							.pl-list::-webkit-scrollbar-thumb {
+								background: rgba(255,255,255,0.2);
+								border-radius: 4px;
 							}
 
 							.pl-item {
@@ -194,6 +211,7 @@
 								overflow: hidden;
 								cursor: pointer;
 								min-width: 0;
+								max-height: calc(80vh - 190px);
 							}
 
 							.pl-preview img {
@@ -426,6 +444,15 @@
 								.pg-info-col {
 									overflow-y: visible;
 								}
+
+								.pl-wrap {
+									flex-direction: column-reverse;
+									gap: 20px;
+								}
+
+								.pl-preview {
+									max-height: none;
+								}
 							}
 						</style>
 
@@ -433,37 +460,45 @@
 						<div class="pl-wrap">
 							<div class="pl-list" id="plList">
 								<div class="pl-item is-active" onmouseenter="plPreview(0)" onclick="pgOpen(0)">
-									<span class="pl-item-title">Warframe: A New War</span>
-									<span class="pl-item-sub">Sound Redesign</span>
+									<span class="pl-item-title">Chilamb</span>
+									<span class="pl-item-sub">Animation</span>
 								</div>
 								<div class="pl-item" onmouseenter="plPreview(1)" onclick="pgOpen(1)">
-									<span class="pl-item-title">World of Horror</span>
-									<span class="pl-item-sub">Sound Redesign</span>
+									<span class="pl-item-title">Har Tarraki Mein Sath</span>
+									<span class="pl-item-sub">Advertisement</span>
 								</div>
 								<div class="pl-item" onmouseenter="plPreview(2)" onclick="pgOpen(2)">
-									<span class="pl-item-title">Afloat</span>
-									<span class="pl-item-sub">Technical Sound Design</span>
-								</div>
-								<div class="pl-item" onmouseenter="plPreview(3)" onclick="pgOpen(3)">
 									<span class="pl-item-title">Killer Vacancy</span>
 									<span class="pl-item-sub">Short Film</span>
 								</div>
-								<div class="pl-item" onmouseenter="plPreview(4)" onclick="pgOpen(4)">
+								<div class="pl-item" onmouseenter="plPreview(3)" onclick="pgOpen(3)">
 									<span class="pl-item-title">Dance Mom</span>
 									<span class="pl-item-sub">Short Film</span>
 								</div>
-								<div class="pl-item" onmouseenter="plPreview(5)" onclick="pgOpen(5)">
+								<div class="pl-item" onmouseenter="plPreview(4)" onclick="pgOpen(4)">
 									<span class="pl-item-title">Knight Terror</span>
 									<span class="pl-item-sub">Feature Film</span>
 								</div>
-								<div class="pl-item" onmouseenter="plPreview(6)" onclick="pgOpen(6)">
+								<div class="pl-item" onmouseenter="plPreview(5)" onclick="pgOpen(5)">
 									<span class="pl-item-title">Strain</span>
 									<span class="pl-item-sub">Short Film</span>
+								</div>
+								<div class="pl-item" onmouseenter="plPreview(6)" onclick="pgOpen(6)">
+									<span class="pl-item-title">Warframe: A New War</span>
+									<span class="pl-item-sub">Sound Redesign</span>
+								</div>
+								<div class="pl-item" onmouseenter="plPreview(7)" onclick="pgOpen(7)">
+									<span class="pl-item-title">World of Horror</span>
+									<span class="pl-item-sub">Sound Redesign</span>
+								</div>
+								<div class="pl-item" onmouseenter="plPreview(8)" onclick="pgOpen(8)">
+									<span class="pl-item-title">Afloat</span>
+									<span class="pl-item-sub">Technical Sound Design</span>
 								</div>
 							</div>
 
 							<div class="pl-preview" onclick="pgOpen(plCurrentPreview)">
-								<img id="plPreviewImg" src="images/Thumbnail_Warframe.jpg" alt="Project preview" />
+								<img id="plPreviewImg" src="images/Thumbnail_Chilamb_01.jpeg" alt="Project preview" />
 							</div>
 						</div>
 
@@ -497,7 +532,7 @@
 									credits: "\nSound Design: Steven Tsia\nFoley: Steven Tsia, Raine Edgar\nDialogue Editing: Eloísa Sandoval\nRerecording Mixer: John Gregory, Dan Hawryluk",
 									description: "A young boy frightened by a local legend, ventures out to seek some peace amongst nature",
 									tags: ["Short film", "Animation", "Folk", "Stereo Mix", "Protools"],
-									thumbnail: "images/Thumbnail_Chilamb_01.jpg",
+									thumbnail: "images/Thumbnail_Chilamb_01.jpeg",
 									thumbnailPosition: "center 30%",
 									thumbnailHeight: "clamp(250px, 50vw, 700px)",
 									youtubeId: "_Ds3LvVGgR0"
@@ -574,13 +609,15 @@
 							var pgCurrent = 0;
 
 							var plThumbnails = [
-								"images/Thumbnail_Warframe.jpg",
-								"images/Thumbnail_WOH.jpg",
-								"images/Thumbnail_Afloat.webp",
+								"images/Thumbnail_Chilamb_01.jpeg",
+								"images/Thumbnail_Kreditbee.jpg",
 								"images/Thumbnail_Killervacancy.jpg",
 								"images/Thumbnail_dancemom.jpg",
 								"images/Thumbnail_KnightTerror.jpg",
-								"images/Thumbnail_Strain.jpg"
+								"images/Thumbnail_Strain.jpg",
+								"images/Thumbnail_Warframe.jpg",
+								"images/Thumbnail_WOH.jpg",
+								"images/Thumbnail_Afloat.webp"
 							];
 
 							var plCurrentPreview = 0;
@@ -594,6 +631,7 @@
 									el.classList.toggle('is-active', i === index);
 								});
 							}
+							
 
 							function pgOpen(index) {
 								pgCurrent = index;
