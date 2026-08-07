@@ -89,10 +89,12 @@
 							#work {
 								width: 80rem !important;
 								max-width: 100%;
-								max-height: 80vh;
-								overflow-y: auto;
+								height: 80vh;
+								overflow: hidden;
 								-webkit-overflow-scrolling: touch;
 								position: relative;
+								display: flex;
+								flex-direction: column;
 							}
 
 							#intro {
@@ -143,18 +145,22 @@
 								gap: 48px;
 								margin-top: 1.5rem;
 								align-items: flex-start;
+								flex: 1 1 auto;
+								min-height: 0;
+								overflow: hidden;
 							}
-
+	
 							.pl-list {
-								flex: 0 0 300px;
+								flex: 0 0 340px;
 								display: flex;
 								flex-direction: column;
 								overflow-y: auto;
+								overflow-x: hidden;
+								max-height: 100%;
 								padding-right: 10px;
 								-webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
 								mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
 							}
-
 							.pl-list::-webkit-scrollbar {
 								width: 4px;
 							}
@@ -173,7 +179,9 @@
 								border-bottom: 1px solid rgba(255,255,255,0.1);
 								cursor: pointer;
 								opacity: 0.45;
-								transition: opacity 0.25s ease;
+								transform: scale(1);
+								transform-origin: left center;
+								transition: opacity 0.25s ease, transform 0.25s ease;
 							}
 
 							.pl-item:first-child {
@@ -183,6 +191,7 @@
 							.pl-item:hover,
 							.pl-item.is-active {
 								opacity: 1;
+								transform: scale(1.04);
 							}
 
 							.pl-item-title {
@@ -534,7 +543,7 @@
 								{
 									title: "Chilamb — Animated Short",
 									credits: "\nSound Design: Steven Tsia\nFoley: Steven Tsia, Raine Edgar\nDialogue Editing: Eloísa Sandoval\nRerecording Mixer: John Gregory, Dan Hawryluk",
-									description: "A young boy frightened by a local legend, ventures out to seek some peace amongst natural world.",
+									description: "A young boy frightened by a local legend, ventures out to seek some peace amongst the natural world.",
 									tags: ["Short film", "Animation", "Folk", "Stereo Mix", "Protools"],
 									thumbnail: "images/Thumbnail_Chilamb_01.jpeg",
 									thumbnailPosition: "center 30%",
@@ -556,7 +565,7 @@
 									credits: "\nSound Design + Mix: Steven Tsia",
 									description: "I wanted to try my hand at creating sonic narratives for ads and commercials. This project had a mix of sound libraries and at home recordings of watches, household objects, and sounds created using my mouth.",
 									tags: ["Sound Redesign", "Advertisement", "Stereo Mix", "Reaper"],
-									thumbnail: "images/Thumbnail_Rolex.jpg",
+									thumbnail: "images/Thumbnail_Rolex_03.jpg",
 									thumbnailPosition: "center 30%",
 									thumbnailHeight: "clamp(250px, 50vw, 700px)",
 									youtubeId: "OXby5HYTElU"
@@ -625,7 +634,7 @@
 							var plThumbnails = [
 								"images/Thumbnail_Chilamb_01.jpeg",
 								"images/Thumbnail_Kreditbee.jpg",
-								"images/Thumbnail_Rolex.jpg",
+								"images/Thumbnail_Rolex_03.jpg",
 								"images/Thumbnail_Killervacancy.jpg",
 								"images/Thumbnail_dancemom.jpg",
 								"images/Thumbnail_KnightTerror.jpg",
@@ -634,8 +643,6 @@
 								"images/Thumbnail_WOH.jpg",
 								"images/Thumbnail_Afloat.webp"
 							];
-
-							var plCurrentPreview = 0;
 
 							function plPreview(index) {
 								plCurrentPreview = index;
